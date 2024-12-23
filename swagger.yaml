@@ -1,0 +1,260 @@
+openapi: 3.0.0
+info:
+  title: 01-Blog-API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api/v1
+tags:
+  - name: Auth
+  - name: Blogs
+  - name: Reactions
+  - name: Comments
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Hazem
+                email:
+                  type: string
+                  example: hazem@admin.com
+                password:
+                  type: string
+                  example: secret
+                bio:
+                  type: string
+                  example: >-
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500.
+                profilePicture:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: hazem@admin.com
+                password: secret
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/logout:
+    get:
+      tags:
+        - Auth
+      summary: Logout
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /blogs/:
+    post:
+      tags:
+        - Blogs
+      summary: Create Blog
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: 'Blog #1'
+                description:
+                  type: string
+                  example: >-
+                    It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum.
+                image:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Blogs
+      summary: Get All Blogs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /blogs/1:
+    get:
+      tags:
+        - Blogs
+      summary: Get Blog By Id
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    patch:
+      tags:
+        - Blogs
+      summary: Update Blog
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: 'Blog #1 | Updated'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /blogs/3:
+    delete:
+      tags:
+        - Blogs
+      summary: Delete Blog
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /reactions/4/like:
+    post:
+      tags:
+        - Reactions
+      summary: Like Blog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: ''
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /reactions/4/dislike:
+    post:
+      tags:
+        - Reactions
+      summary: Blog Dislike
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /reactions:
+    get:
+      tags:
+        - Reactions
+      summary: Get All Reactions
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /reactions/4:
+    get:
+      tags:
+        - Reactions
+      summary: Get All Post Reactions
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /comments/:
+    get:
+      tags:
+        - Comments
+      summary: Get All Comments
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /comments/4/create:
+    post:
+      tags:
+        - Comments
+      summary: Create Comment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                content: This is an awesome blog, I recommend it!
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /comments/4/:
+    get:
+      tags:
+        - Comments
+      summary: Get All Blog Comments
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /comments/1/:
+    patch:
+      tags:
+        - Comments
+      summary: Update Comment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                content: This is an awesome blog, I recommend it | UPDATED!
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Comments
+      summary: Delete Comment
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
