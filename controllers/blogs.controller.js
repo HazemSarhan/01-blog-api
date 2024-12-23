@@ -20,7 +20,7 @@ export const createBlog = async (req, res) => {
       {
         use_filename: true,
         folder: 'lms-images',
-      }
+      },
     );
     image = result.secure_url;
   }
@@ -67,7 +67,7 @@ export const getAllBlogs = async (req, res) => {
       ]);
 
       return { ...blog, likeCount, dislikeCount };
-    })
+    }),
   );
 
   res.status(StatusCodes.OK).json({ blogs: blogsWithReactionCounts });
@@ -108,7 +108,7 @@ export const updateBlog = async (req, res) => {
       {
         use_filename: true,
         folder: 'lms-images',
-      }
+      },
     );
     image = result.secure_url;
   }
