@@ -40,7 +40,7 @@
 
 Built with:
 
-<img src="https://skillicons.dev/icons?i=js,nodejs,express,postgres,prisma	" /><br>
+<img src="https://skillicons.dev/icons?i=js,nodejs,express,postgres,prisma" /><br>
 
 ## Getting Started
 
